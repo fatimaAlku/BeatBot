@@ -1,32 +1,55 @@
-
-// Submission model for storing user music preference requests
-// Captures user inputs from the BeatForm for generating music recommendations
-
 import mongoose from 'mongoose';
 
-// Schema for user music preference submissions
-const submissionSchema = new mongoose.Schema({
- // Reference to the user who made this submission
- user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
- 
- // Music preference fields collected from BeatForm
- ageGroup: { type: String, required: true, trim: true }, // User's age demographic
- mood: { type: String, required: true, trim: true }, // Desired mood/vibe
- activity: { type: String, required: true, trim: true }, // Context for listening
- energy: { type: String, required: true, enum: ['low', 'medium', 'high'] }, // Energy level preference
- genres: { type: [String], default: [] }, // Preferred music genres
- language: { type: String, default: 'any', trim: true }, // Language preference for lyrics
- count: { type: Number, min: 3, max: 20, default: 10 } // Number of tracks requested
-}, { timestamps: true }); // Automatically add createdAt and updatedAt
+const Schema = mongoose.Schema;
 
-// Database index for efficient user submission queries
-submissionSchema.index({ user: 1, createdAt: -1 }); // Find user's submissions by date
-
-// Virtual field to populate related results
-submissionSchema.virtual('results', {
- ref: 'Result', // Reference the Result model
- localField: '_id', // Use submission's _id
- foreignField: 'submission' // Match with result's submission field
+const submissionSchema = new Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  ageGroup: {
+    type: String,
+    required: true,
+    enum: ['13-17', '18-29', '30-44', '45-59', '60+']
+  },
+  mood: {
+    type: String,
+    required: true,
+    enum: ['energetic', 'chill', 'happy', 'sad', 'focused', 'romantic', 'angry', 'nostalgic']
+  },
+  activity: {
+    type: String,
+    required: true,
+    enum: ['workout', 'studying', 'driving', 'relaxing', 'party', 'work', 'sleep', 'cooking']
+  },
+  energy: {
+    type: String,
+    required: true,
+    enum: ['low', 'medium', 'high']
+  },
+  genres: [{
+    type: String,
+    required: true,
+    enum: ['rock', 'pop', 'hip-hop', 'electronic', 'jazz', 'classical', 'country', 'r&b', 'reggae', 'blues', 'folk', 'ambient', 'metal', 'punk', 'indie', 'latin', 'world']
+  }],
+  language: {
+    type: String,
+    required: true,
+    enum: ['english', 'spanish', 'french', 'german', 'italian', 'portuguese', 'japanese', 'korean', 'chinese', 'any']
+  },
+  count: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 50,
+    default: 10
+  }
+}, {
+  timestamps: true
 });
+
+// Index for efficient querying
+submissionSchema.index({ user: 1, createdAt: -1 });
 
 export default mongoose.model('Submission', submissionSchema);
