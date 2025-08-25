@@ -1,5 +1,3 @@
-// # OpenAI result (cached)
-
 import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
