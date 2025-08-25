@@ -7,6 +7,7 @@ import ensureLoggedIn from './config/ensureLoggedIn.js';
 import userRoutes from './routes/api/users.js';
 import itemRoutes from './routes/api/items.js';
 import orderRoutes from './routes/api/orders.js';
+import aiRoutes from './routes/api/ai.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 app.use('/api/users', userRoutes);
 app.use('/api/items', checkToken, ensureLoggedIn, itemRoutes);
 app.use('/api/orders', checkToken, ensureLoggedIn, orderRoutes);
+app.use('/api/ai', aiRoutes);
 
 // Determine which directory to serve static files from
 const staticDir = process.env.NODE_ENV === 'production' ? 'dist' : 'public';
