@@ -10,7 +10,7 @@ dotenv.config();
 
 (async function() {
 
-  // Clear old data
+  // delete old data
   await User.deleteMany({});
   const users = await User.create([
     { name: "Alice", email: "alice@example.com", password: "password123" },

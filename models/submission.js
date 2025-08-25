@@ -14,7 +14,7 @@ const submissionSchema = new mongoose.Schema({
 submissionSchema.index({ user: 1, status: 1 });
 submissionSchema.index({ createdAt: -1 });
 
-// Virtual for results
+// results
 submissionSchema.virtual('results', {
   ref: 'Result',
   localField: '_id',

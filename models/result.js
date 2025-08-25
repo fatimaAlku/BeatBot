@@ -9,12 +9,12 @@ const resultSchema = new mongoose.Schema({
   isPublic: { type: Boolean, default: false }
 }, { timestamps: true });
 
-// Indexes
+// indexs
 resultSchema.index({ submission: 1 });
 resultSchema.index({ user: 1, createdAt: -1 });
 resultSchema.index({ score: -1 });
 
-// auto-assign user from submission
+// automatically assign user from submission
 resultSchema.pre('save', async function (next) {
   if (!this.user && this.submission) {
     const submission = await mongoose.model('Submission').findById(this.submission);
@@ -22,5 +22,5 @@ resultSchema.pre('save', async function (next) {
   }
   next();
 });
-
+// export
 export default mongoose.model('Result', resultSchema);
