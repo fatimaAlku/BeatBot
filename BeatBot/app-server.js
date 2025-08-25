@@ -5,8 +5,7 @@ import cors from 'cors';
 import checkToken from './config/checkToken.js';
 import ensureLoggedIn from './config/ensureLoggedIn.js';
 import userRoutes from './routes/api/users.js';
-import itemRoutes from './routes/api/items.js';
-import orderRoutes from './routes/api/orders.js';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
