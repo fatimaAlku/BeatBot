@@ -1,11 +1,12 @@
-// # /api/submissions
+// routes/api/submissions.js
 import express from 'express';
-// import ensureLoggedIn from '../../config/ensureLoggedIn.js';
+import ensureLoggedIn from '../../config/ensureLoggedIn.js';
 import { index, show, create, update, destroy, listResults } from '../../controllers/api/submissions.js';
 
 const router = express.Router();
 
-// Middleware now applied at app level in app-server.js
+// protect all routes
+router.use(ensureLoggedIn);
 
 router.get('/', index);
 router.post('/', create);
