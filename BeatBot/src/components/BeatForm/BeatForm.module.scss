@@ -1,3 +1,77 @@
+/* Spacing under the title */
+.title {
+  margin: 0 0 20px;
+  color: var(--text);
+}
+
+/* Override global form grid so BeatForm controls render correctly */
+.form {
+  display: grid;                        /* override global element rule */
+  grid-template-columns: 1fr 1fr;       /* two columns on desktop */
+  gap: 18px 24px;                       /* rows x columns gap */
+}
+
+/* Stack label + field vertically inside each group */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Genres grid: multi-column, aligned checkbox + text */
+.genreGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px 16px;
+}
+
+.genreCheckbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+/* Dark-mode custom checkboxes */
+.genreCheckbox input[type="checkbox"] {
+  /* reset native look for consistent dark styling */
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  background: #0e0e0e;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+}
+
+.genreCheckbox input[type="checkbox"]:focus {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--focus) 35%, transparent);
+}
+
+.genreCheckbox input[type="checkbox"]:checked {
+  background: var(--red);
+  border-color: var(--red-hover);
+}
+
+.genreCheckbox input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  color: #fff;
+}
+
+/* Range slider to match theme (optional) */
+.rangeSlider {
+  accent-color: var(--red);
+}
+
 /* Recommendation area polish (optional) */
 .recommendation {
   background: var(--panel);
