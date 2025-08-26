@@ -106,29 +106,32 @@ export async function recommend(req, res) {
       try {
         // Creates a new Submission document => stores what the user asked for (their form answers)
         const submission = await Submission.create({
-          user: userId,
-          title: `Music for ${prefs.activity} - ${prefs.mood} mood`,
-          content: JSON.stringify(prefs),
-          submissionType: 'form',
-          status: 'completed',
-          tags: prefs.genres
-        });
-        submissionId = submission._id;
+      user: userId,
+      ageGroup: prefs.ageGroup,
+      mood: prefs.mood,
+      activity: prefs.activity,
+      energy: prefs.energy,
+      genres: prefs.genres,
+      language: prefs.language,
+      count: prefs.count
+    });
+    submissionId = submission._id;
 
         // Creates a new Result document => stores what the AI responded with (the playlist)
         await Result.create({
-          submission: submission._id,
-          user: userId,
-          resultType: 'success',
-          output: JSON.stringify(playlist)
-        }); // Links them together via submissionId
-      } catch (dbErr) {
-        // Do not fail the response if persistence fails; just log.
-        console.error('Failed to persist submission/result:', dbErr);
+      submission: submission._id,
+      user: userId,
+      title: playlist.title,
+      explanation: playlist.explanation,
+      metadata: playlist.metadata,
+      tracks: playlist.tracks
+    });
+  } catch (dbErr) {
+    console.error('Failed to persist submission/result:', dbErr);
       }
     }
     // If saved, return the playlist plus submissionId.
-    res.json(submissionId ? { ...playlist, submissionId } : playlist);
+    return res.json(submissionId ? { ...playlist, submissionId } : playlist);
   } catch (err) {
     console.error("recommend error:", err);
     res.status(500).json({ error: "recommendation_failed" });
