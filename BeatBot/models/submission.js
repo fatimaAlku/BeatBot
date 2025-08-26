@@ -11,7 +11,7 @@ const submissionSchema = new Schema({
   ageGroup: {
     type: String,
     required: true,
-    enum: ['13-17', '18-29', '30-44', '45-59', '60+']
+    enum: ['under-12', '13-17', '18-29', '30-44', '45-59', '60+']
   },
   mood: {
     type: String,
