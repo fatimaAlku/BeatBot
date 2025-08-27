@@ -1,7 +1,10 @@
 # BeatBot 🎧
 
 BeatBot is a **full-stack MERN** app that gives **AI-powered music recommendations** from a short preferences form. Users sign up, log in, submit their mood/activity/genres, and get back a playlist with **title, explanation, and track picks** (each with a “why”). If the user is authenticated, the submission and result are **saved** so they can be viewed later.
-![BeatBot Demo](/BeatBot/src/assets/BeatBot-MainScreen) 
+
+---
+
+![BeatBot Demo](/BeatBot/src/assets/BeatBot-MainScreen.png) 
 
 ---
 
@@ -156,4 +159,4 @@ Vite is configured to proxy `/api/*` → `http://localhost:3000`, so the fronten
 ![BeatBot-WireFrame](/BeatBot/src/assets/wireframe.png) 
 ---
 
-> *Have fun beating the silence.🖤*
+> Have fun beating the silence.🖤
