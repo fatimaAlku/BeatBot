@@ -5,9 +5,23 @@ import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 import SignUpForm from '../../components/SignUpForm/SignUpForm.jsx';
 
 export default function AuthPage({ setUser }) {
+  // false => show Sign Up first
   const [showLogin, setShowLogin] = useState(false);
+  const [justSignedUp, setJustSignedUp] = useState(false);
 
-  const handleSignedUp = () => setShowLogin(true);
+  const handleSignedUp = () => {
+    setShowLogin(true); // switch to Login tab after sign up
+  };
+
+  const toggle = () => {
+    setShowLogin(prev => !prev);
+    setJustSignedUp(false);
+  };
+
+  const goToLogin = () => {
+    setShowLogin(true);
+    setJustSignedUp(false);
+  };
 
   return (
     <main className={styles?.AuthPage || ''}>
