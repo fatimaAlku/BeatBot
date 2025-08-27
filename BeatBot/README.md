@@ -1,12 +1,105 @@
-# React + Vite
+# BeatBot 🎵
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BeatBot is a **Full-Stack MERN application** that helps users discover their "beat" (personality insight) by answering a short questionnaire. The app integrates **OpenAI** to generate personalized results based on user inputs.
 
-Currently, two official plugins are available:
+Users can:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Sign up / Log in securely (JWT Auth)
+* Fill out a multiple-choice questionnaire
+* Receive AI-generated personality results
+* View their history of results on a dashboard
 
-## Expanding the ESLint configuration
+![App Screenshot](./docs/screenshot.png) 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Technologies Used
+
+* **Frontend**: React + Vite + TailwindCSS
+* **Backend**: Node.js + Express.js
+* **Database**: MongoDB (Mongoose)
+* **Authentication**: JWT + bcrypt
+* **AI Integration**: OpenAI API
+* **Deployment**: Render (Full-stack deployment)
+* **Project Management**: Trello + GitHub Projects
+
+---
+
+## Project Links
+
+* 🎤 [Pitch Deck](https://your-link-here)
+* 📋 [Trello Board](https://your-link-here)
+* 🚀 [Deployed App on Render](https://your-link-here)
+
+---
+
+## Planned Future Enhancements
+
+* [ ] OAuth login (Google, GitHub)
+* [ ] Shareable result pages (public link)
+* [ ] Ability to retake quiz with different question sets
+
+---
+
+## Team Roles
+
+- **Scrum Master / Product Lead – Hussain Alkaabi**  
+  Responsible for planning, facilitating standups, and managing Trello workflow.  
+
+- **GitHub Manager – Fatima Alkuwaiti**  
+  Oversees repository setup, pull request reviews, and CI/CD pipeline.  
+
+- **Designer – Salman Alhashimee**  
+  Creates wireframes and ensures UI/UX consistency across the app.  
+
+- **Database Manager – Hawra Ayoob**  
+  Designs schemas, manages seed data, and optimizes database indexing.  
+
+- **Frontend Lead – Abdulrazaq Mohammed**  
+  Builds React components, manages state, and implements frontend logic.  
+
+- **Backend Lead – Alia Burashid**  
+  Develops Express routes, implements authentication, and integrates OpenAI API.  
+
+---
+
+## Getting Started (Local Dev)
+
+```bash
+# Clone the repo
+git clone https://github.com/your-org/beatbot.git
+cd beatbot
+
+# Install dependencies
+npm install
+
+# Run app
+npm run dev
+```
+
+Create a `.env` file in `/server` with:
+
+```
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+OPENAI_API_KEY=your_openai_api_key
+```
+
+---
+
+## API Routing Table (MVP)
+| Method | Path                      | Auth | Body (req)                           | Success (res)                     |
+| -----: | ------------------------- | :--: | ------------------------------------ | --------------------------------- |
+|   POST | `/api/auth/register`      |  No  | `{ email, password }`                | `201 { user:{_id,email}, token }` |
+|   POST | `/api/auth/login`         |  No  | `{ email, password }`                | `200 { user, token }`             |
+|    GET | `/api/auth/me`            |  Yes | —                                    | `200 { user }`                    |
+|   POST | `/api/questionnaires`     |  Yes | `{ answers:[{qId, choice}], meta? }` | `201 { questionnaire }`           |
+|    GET | `/api/questionnaires/:id` |  Yes | —                                    | `200 { questionnaire }`           |
+|   POST | `/api/results`            |  Yes | `{ questionnaireId }`                | `201 { result }`                  |
+|    GET | `/api/results`            |  Yes | —                                    | `200 { results:[...] }`           |
+|    GET | `/api/results/:id`        |  Yes | —                                    | `200 { result }`                  |
+| DELETE | `/api/results/:id`        |  Yes | —                                    | `200 { message }`                 |
+
+---
+
+## WireFrame
