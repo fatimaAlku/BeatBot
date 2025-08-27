@@ -5,52 +5,26 @@ import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 import SignUpForm from '../../components/SignUpForm/SignUpForm.jsx';
 
 export default function AuthPage({ setUser }) {
-  // false => show Sign Up first
   const [showLogin, setShowLogin] = useState(false);
-  const [justSignedUp, setJustSignedUp] = useState(false);
 
-  const handleSignedUp = () => {
-    setShowLogin(true);     // flip to Login tab
-    setJustSignedUp(true);  // show banner
-  };
-
-  const toggle = () => {
-    setShowLogin(prev => !prev);
-    setJustSignedUp(false); // clear banner when switching tabs
-  };
+  const handleSignedUp = () => setShowLogin(true);
 
   return (
     <main className={styles?.AuthPage || ''}>
-      <div>
-        <h2 className={styles.title}>BeatBot</h2>
-        <h3
-          role="button"
-          tabIndex={0}
-          onClick={toggle}
-          onKeyDown={(e) => (e.key === 'Enter' ? toggle() : null)}
-          style={{ cursor: 'pointer', userSelect: 'none' }}
-        >
-          {showLogin ? 'Need an account? SIGN UP' : 'Already have an account? LOG IN'}
-        </h3>
+      {/* LEFT: image only (pinned to bottom) */}
+      <section className={styles.left} aria-hidden="true">
+        <img className={styles.hero} src="/AI.png" alt="" aria-hidden="true" />
+      </section>
 
-        {justSignedUp && (
-          <div style={{
-            marginTop: 8,
-            padding: '8px 12px',
-            borderRadius: 8,
-            background: '#ecfeff',
-            color: '#0e7490',
-            fontSize: '.95rem'
-          }}>
-            Account created! Please log in to continue.
-          </div>
+      {/* RIGHT: title + form (keeps position) */}
+      <section className={styles.right}>
+        <h1 className={styles.logoText}>BeatBot</h1>
+        {showLogin ? (
+          <LoginForm setUser={setUser} onGoToSignup={() => setShowLogin(false)} />
+        ) : (
+          <SignUpForm setUser={setUser} onSignedUp={handleSignedUp} onGoToLogin={() => setShowLogin(true)} />
         )}
-      </div>
-
-      {showLogin
-        ? <LoginForm setUser={setUser} />
-        : <SignUpForm setUser={setUser} onSignedUp={handleSignedUp} />
-      }
+      </section>
     </main>
   );
 }

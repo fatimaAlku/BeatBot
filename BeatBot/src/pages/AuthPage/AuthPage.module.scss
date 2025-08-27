@@ -1,23 +1,66 @@
+/* src/pages/AuthPage/AuthPage.module.scss */
 .AuthPage {
-    height: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: rgb(122, 12, 12);
-    border-radius: 2vmin;
-  }
-
-
-  .AuthPage h3 {
-    margin-top: 4vmin;
-    text-align: center;
-    color: var(--text-light);
-    cursor: pointer;
-  }
-
-
-  .title {
-  color: var(--black);       
-  margin: 0 0 8px;
-  font-size: 3rem;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr; /* left image panel : right form panel */
+  gap: 0;
+  align-items: stretch;
+  background-color: rgb(122, 12, 12);
+  position: relative;
+  overflow: hidden;
 }
+
+/* LEFT PANE: center image in the middle */
+.left {
+  position: relative;
+  display: flex;
+  align-items: center;   /* center vertically */
+  justify-content: center; /* center horizontally */
+  background: transparent;
+  overflow: hidden;
+  border-radius: 0 1rem 1rem 0;
+}
+
+/* The AI image centered & scaled */
+.hero {
+  max-height: 100%;       /* fit within container */
+  width: auto;
+  object-fit: contain;
+  object-position: center center; /* center */
+  opacity: 0.95;
+  transform: scale(1.6);  /* adjust zoom as needed */
+  margin-top: 90px;
+  transform-origin: center center; /* scale from the middle */
+  pointer-events: none;
+}
+
+
+/* RIGHT PANE: keep form in the same spot (center) */
+.right {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* center horizontally */
+  justify-content: center;  /* center vertically – adjust if you want higher/lower */
+  padding-left: 1rem;
+  text-align: center;
+}
+
+/* BeatBot heading above the form */
+.logoText {
+  margin-bottom: 2rem;
+  color: #ffffff;
+  font-size: 5rem;          /* adjust to taste */
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.AuthPage :global(.error-message) {
+  color: #ef4444;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
