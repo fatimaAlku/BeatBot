@@ -1,23 +1,120 @@
+/* src/pages/AuthPage/AuthPage.module.scss */
+
 .AuthPage {
-    height: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: rgb(122, 12, 12);
-    border-radius: 2vmin;
-  }
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;                 /* ⬅️ was space-evenly */
+  align-items: center;
+  gap: clamp(16px, 2.5vw, 28px);           /* ⬅️ smaller gap = closer columns */
+  padding: clamp(16px, 4vw, 40px);
+  background-color: rgb(122, 12, 12);
+  border-radius: 2vmin;
+  font-family: "Times New Roman", Times, serif;
+}
 
+/* Left column (image + title + toggle) */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: clamp(340px, 38vw, 520px);        /* ⬅️ softly constrains hero width */
+  text-align: center;
+}
 
-  .AuthPage h3 {
-    margin-top: 4vmin;
-    text-align: center;
-    color: var(--text-light);
-    cursor: pointer;
-  }
+.heroImg {
+  margin-top: -90px;
+  width: clamp(400px, 50vw, 600px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 18px 32px rgba(0,0,0,.45));
+}
 
-
-  .title {
-  color: var(--black);       
+/* Title */
+.title {
+  color: black;
   margin: 0 0 8px;
   font-size: 3rem;
+  line-height: 1.1;
 }
+
+/* Toggle text */
+.AuthPage h3 {
+  text-align: center;
+  color: black;
+  cursor: pointer;
+  user-select: none;
+  transition: color .15s ease;
+}
+.AuthPage h3:hover { color: #fff; }
+
+/* Right column (forms) */
+.authColumn {
+  width: clamp(420px, 34vw, 560px);        /* ⬅️ aligns visually with hero */
+}
+
+/* Form card */
+:global(.form-container) {
+  width: 100%;
+  padding: 20px;
+  background: #0f0f0f;
+  border: 1px solid #2b2b2b;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+}
+
+/* Vertical form layout */
+:global(.form-container form) {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 12px;
+  margin: 0;
+}
+
+:global(.form-container label) {
+  color: #eaeaea;
+  text-align: left;
+}
+
+:global(.form-container input[type="text"]),
+:global(.form-container input[type="email"]),
+:global(.form-container input[type="password"]) {
+  height: 44px;
+  padding: 0 12px;
+  font-size: 1rem;
+  color: #f3f3f3;
+  background: #121212;
+  border: 1px solid #2b2b2b;
+  border-radius: 10px;
+  outline: none;
+  box-sizing: border-box;
+}
+:global(.form-container input:focus) {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(185,28,28,.3);
+}
+
+:global(.form-container button[type="submit"]) {
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid #ef4444;
+  background: linear-gradient(180deg, #b91c1c 0%, #7f1d1d 100%);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+:global(.form-container button[type="submit"]:hover) {
+  filter: brightness(1.05);
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .AuthPage {
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+  .hero { width: min(640px, 92vw); }
+  .authColumn { width: min(560px, 92vw); }
+}
+

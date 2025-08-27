@@ -3,54 +3,51 @@ import { useState } from 'react';
 import styles from './AuthPage.module.scss';
 import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 import SignUpForm from '../../components/SignUpForm/SignUpForm.jsx';
+import hero from '../../assets/beatbot-hero.png';
 
 export default function AuthPage({ setUser }) {
-  // false => show Sign Up first
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);   // Sign Up first
   const [justSignedUp, setJustSignedUp] = useState(false);
 
   const handleSignedUp = () => {
-    setShowLogin(true);     // flip to Login tab
-    setJustSignedUp(true);  // show banner
+    setShowLogin(true);
+    setJustSignedUp(true);
   };
 
   const toggle = () => {
     setShowLogin(prev => !prev);
-    setJustSignedUp(false); // clear banner when switching tabs
+    setJustSignedUp(false);
   };
 
   return (
     <main className={styles?.AuthPage || ''}>
-      <div>
+      {/* Left: hero */}
+      <div className={styles.hero}>
+        <img className={styles.heroImg} src={hero} alt="BeatBot AI with headphones" />
         <h2 className={styles.title}>BeatBot</h2>
         <h3
           role="button"
           tabIndex={0}
           onClick={toggle}
           onKeyDown={(e) => (e.key === 'Enter' ? toggle() : null)}
-          style={{ cursor: 'pointer', userSelect: 'none' }}
         >
-          {showLogin ? 'Need an account? SIGN UP' : 'Already have an account? LOG IN'}
+          {showLogin ? 'Need an account? Signup' : 'Already have an account? Login'}
         </h3>
 
         {justSignedUp && (
-          <div style={{
-            marginTop: 8,
-            padding: '8px 12px',
-            borderRadius: 8,
-            background: '#ecfeff',
-            color: '#0e7490',
-            fontSize: '.95rem'
-          }}>
-            Account created! Please log in to continue.
+          <div className={styles.banner}>
+            
           </div>
         )}
       </div>
 
-      {showLogin
-        ? <LoginForm setUser={setUser} />
-        : <SignUpForm setUser={setUser} onSignedUp={handleSignedUp} />
-      }
+      {/* Right: forms */}
+      <div className={styles.authColumn}>
+        {showLogin
+          ? <LoginForm setUser={setUser} />
+          : <SignUpForm setUser={setUser} onSignedUp={handleSignedUp} />
+        }
+      </div>
     </main>
   );
 }
