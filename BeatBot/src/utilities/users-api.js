@@ -10,3 +10,11 @@ export function signUp(userData) {
 export function login(credentials) {
   return sendRequest(`${BASE_URL}/login`, 'POST', credentials);
 }
+
+export function getProfile() {
+  return sendRequest(`${BASE_URL}/profile`, 'GET');
+}
+
+export function updateProfile(updates) {
+  return sendRequest(`${BASE_URL}/profile`, 'PUT', updates);
+}

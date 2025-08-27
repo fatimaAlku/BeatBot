@@ -5,6 +5,7 @@ import BeatForm from '../components/BeatForm/BeatForm.jsx';
 import AuthPage from '../pages/AuthPage/AuthPage.jsx';
 import HistoryPage from '../pages/HistoryPage/HistoryPage.jsx';
 import ResultPage from '../pages/ResultPage/ResultPage.jsx';
+import ProfilePage from '../pages/ProfilePage/ProfilePage.jsx';
 import AppLayout from '../layouts/AppLayout.jsx';
 
 import { getToken, getUser } from '../utilities/users-service.js';
@@ -31,6 +32,7 @@ export default function AppRouter() {
         >
           <Route index element={<BeatForm />} />
           <Route path="/history" element={<HistoryPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/results/:id" element={<ResultPage />} />
         </Route>
 

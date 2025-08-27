@@ -1,0 +1,118 @@
+/* Profile.module.scss */
+
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 560px;
+  margin: 2.5rem auto;
+  padding: 1.8rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+
+  h2 {
+    margin-top: .25rem;
+    font-size: 1.8rem;
+    color: var(--text);
+  }
+
+  p {
+    margin-top: 0.25rem;
+    font-size: 1rem;
+    color: var(--muted);
+  }
+}
+
+
+.editForm {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #0e0e0e;
+  color: var(--text);
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  margin: 0 0 .25rem;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.btnRow {
+  display: flex;
+  justify-content: center;
+  gap: .75rem;
+  margin-top: .75rem;
+}
+
+.btn {
+  min-width: 160px;
+}
+
+.primaryBtn {
+  background: linear-gradient(180deg, var(--red) 0%, var(--red-900) 100%);
+  border: 1px solid var(--red-hover);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.secondaryBtn {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.section {
+  width: 100%;
+  text-align: left;
+  margin-top: 1.25rem;
+  padding-top: .25rem;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: .5rem 1rem;
+  margin-top: .5rem;
+}
+
+.label {
+  color: var(--muted);
+}
+
+.value {
+  color: var(--text);
+}
+
+.tips {
+  margin: .5rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}

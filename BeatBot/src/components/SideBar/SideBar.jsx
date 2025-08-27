@@ -1,4 +1,3 @@
-// src/components/SideBar/SideBar.jsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './SideBar.module.scss';
@@ -8,6 +7,7 @@ export default function SideBar({ user, setUser }) {
   const navItems = [
     { label: 'Home', to: '/' },
     { label: 'History', to: '/history' },
+    { label: 'Profile', to: '/profile' }, // ✅ ADDED THIS LINE
   ];
 
   return (

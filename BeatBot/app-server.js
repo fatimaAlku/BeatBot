@@ -7,6 +7,7 @@ import ensureLoggedIn from './config/ensureLoggedIn.js';
 import userRoutes from './routes/api/users.js';
 import aiRoutes from './routes/api/ai.js';
 import submissionRoutes from './routes/api/submissions.js';
+import profileRouter from './routes/api/profile.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,6 +28,7 @@ app.use(checkToken);
 app.use('/api/users', userRoutes);
 app.use('/api/ai', aiRoutes); // guests allowed; saves only if req.user exists
 app.use('/api/submissions', ensureLoggedIn, submissionRoutes);
+app.use('/api/users',profileRouter);
 
 // Static
 const staticDir = process.env.NODE_ENV === 'production' ? 'dist' : 'public';
