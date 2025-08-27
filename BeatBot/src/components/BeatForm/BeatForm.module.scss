@@ -1,7 +1,14 @@
-/* Spacing under the title */
+/* Center the page title */
 .title {
-  margin: 0 0 20px;
+  display: block;
+  text-align: center;
+  margin: 0 auto 20px;      /* centers horizontally + adds spacing below */
+  font-weight: 800;
+  font-size: 1.75rem;
+  letter-spacing: .3px;
   color: var(--text);
+  position: relative;
+  margin-bottom: 50px;
 }
 
 /* Override global form grid so BeatForm controls render correctly */

@@ -1,0 +1,47 @@
+.title {
+  margin: 0 0 10px;
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: .3px;
+  color: var(--text);
+  position: relative;
+  text-shadow: 0 1px 0 #000; /* subtle pop on dark bg */
+}
+
+/* red accent underline */
+.title::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: clamp(120px, 30%, 240px);
+  margin-top: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--red), transparent);
+}
+
+
+
+.tracks ul {
+  margin: 0;
+  padding-left: 1.2rem;   /* bullet indent */
+}
+
+.track {
+  padding: 10px 0 14px;   /* space between list items */
+}
+
+.trackInfo {
+  display: flex;          /* keeps title — artist on one line */
+  align-items: baseline;
+  gap: 8px;               /* spacing around the dash */
+}
+
+.trackInfo strong {
+  margin-right: 2px;      /* tiny extra space after the title */
+}
+
+.trackWhy {
+  margin-top: 8px;        /* <-- space between title/artist and why */
+  line-height: 1.45;
+  color: var(--muted);
+}

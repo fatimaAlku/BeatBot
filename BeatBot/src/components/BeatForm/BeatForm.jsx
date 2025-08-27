@@ -117,7 +117,7 @@ const BeatForm = () => {
 
   return (
     <div className={styles.beatForm}>
-      <h2 className={styles.title}>Your Perfect Music Recommendation</h2>
+      <h2 className={styles.title}>Your Music Recommendation</h2>
 
       {!recommendation ? (
         <form onSubmit={handleSubmit} className={styles.form}>
