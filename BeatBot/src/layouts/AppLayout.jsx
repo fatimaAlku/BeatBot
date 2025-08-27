@@ -9,7 +9,7 @@ export default function AppLayout({ user, setUser }) {
     <div className={styles.shell}>
       <SideBar user={user} setUser={setUser} />
       <main className={styles.main}>
-        <Outlet />
+        <Outlet context={{ user, setUser }} />
       </main>
     </div>
   );
