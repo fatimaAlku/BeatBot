@@ -12,7 +12,7 @@ export default function UserLogOut({ user, setUser }) {
     <div className={styles.UserLogOut}>
       <div className={styles.name}>{user?.name}</div>
       <div className={styles.email}>{user?.email}</div>
-      <button className={styles.btn} onClick={handleLogOut}>LOG OUT</button>
+      <button className={styles.btn} onClick={handleLogOut}>logout</button>
     </div>
   );
 }

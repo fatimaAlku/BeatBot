@@ -13,14 +13,7 @@ const ResultCard = ({ recommendation, onReset }) => {
       {title && <h3 className={styles.title}>{title}</h3>}
       {explanation && <p className={styles.explanation}>{explanation}</p>}
 
-      {metadata && (
-        <div className={styles.metadata}>
-          <span>Age: {metadata.ageGroup}</span>
-          <span>Mood: {metadata.mood}</span>
-          <span>Activity: {metadata.activity}</span>
-          <span>Energy: {metadata.energy}</span>
-        </div>
-      )}
+     
 
       {Array.isArray(tracks) && tracks.length > 0 && (
         <div className={styles.tracks}>
