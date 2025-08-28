@@ -1,7 +1,6 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './SideBar.module.scss';
-import UserLogout from '../UserLogout/UserLogout.jsx';
+import UserLogout from '../UserLogOut/UserLogOut.jsx';
 
 export default function SideBar({ user, setUser }) {
   const navItems = [
