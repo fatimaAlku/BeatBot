@@ -1,6 +1,4 @@
 // src/components/ResultCard/ResultCard.jsx
-import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './ResultCard.module.scss';
 
 const ResultCard = ({ recommendation, onReset }) => {
@@ -42,14 +40,6 @@ const ResultCard = ({ recommendation, onReset }) => {
   );
 };
 
-ResultCard.propTypes = {
-  recommendation: PropTypes.shape({
-    title: PropTypes.string,
-    explanation: PropTypes.string,
-    metadata: PropTypes.object,
-    tracks: PropTypes.arrayOf(PropTypes.object),
-  }),
-  onReset: PropTypes.func,
-};
+
 
 export default ResultCard;
